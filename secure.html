@@ -39,6 +39,25 @@
                             }
                         }
                     );
+                    
+                    // Initialize the lpTag namespace and the identity array, if the identity function is placed above the tag.
+
+                    lpTag.identities = [];
+
+                        lpTag.identities.push(identityFn);
+                        function identityFn(callback) {
+                            callback({
+                                iss: "https://www.jwttoken.com",
+                                acr: "loa1",
+                                sub: "12345"
+                            });
+                        }
+
+                    function getJwtToken(callback) {
+
+                        callback("eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NSIsImlhdCI6MTUxNjIzOTAyMiwiZXhwIjoxNzE2MjM5MDIyLCJpc3MiOiJodHRwczovL3d3dy5qd3R0b2tlbi5jb20iLCJnaXZlbl9uYW1lIjoiSm9lIiwiZmFtaWx5X25hbWUiOiJHdXkifQ.cUlTti31ei9-90z4Uq7uwxTpw5mwijr2dPvbKfNWaeMzbrnXrQzJgKIGii9xWQB-GKrzW-xF7f3YY5omU_Alfg_DE1PUBSaNOCz851BU4IfKe-cTkM2t6aQNAtFAhc5q4g4WsDVWjw5RQXoy6QppuiRhqpQTtBvizEBSM08mvPTTkfx6_hgApdgY0bEYvFdvJSbGJkyETH_R0iXmlfMfUxxsoZVIpe5pVBd76wymLT1_nyD9NLM53y0iYujrVEA_gE0LXxpbRTRoT-zG-8V5w4HkOFBKqZxXkFGiQuigt1usMugi0HLANlmdVFcphDuaMIqMRE6y7hKtq8ZgNsufXg");
+                        
+                    };
                 </script>
             </section>
         </main> 
