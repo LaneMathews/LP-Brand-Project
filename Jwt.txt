@@ -42,3 +42,5 @@ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NSIsImlhdCI6MTUxNjIzOTAyMiw
   "given_name": "Joe",
   "family_name": "Guy"
 }
+
+Encoding Algorithm Type Used: "RS256"
