@@ -25,11 +25,16 @@
                 lpTag.agentSDK.init({});
 
                 var updateCallback = function(data) {
-                    console.log("data: " + data);
+                    console.log("Data");
+                    console.log(data);
 
                     var newObject = JSON.parse(data);
-
-                    console.log("newObject: " + newObject);
+                    console.log("New Object")
+                    console.log(newObject);
+                    
+                    var formatObject = newObject.toString();
+                    console.log("Format Object");
+                    console.log(formatObject);
                 };
 
                 var pathToData = "chatTranscript.lines"
