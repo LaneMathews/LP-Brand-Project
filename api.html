@@ -9,11 +9,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <style>
+        div {margin-left: 25px;}
         ul {font-weight: bold; font-size: 20px; list-style: inside;}
         li {font-size: 12px;}
     </style>
     <body>
-        <input type="text" id="searchBox">
+        <h1>OMDb API Search</h1>
+        <div>
+            <label for = searchBox>Enter Title and Press the Enter Key:</label>
+            <input type="text" id="searchBox" name="searchBox">
+        </div>
         <ul>Info Returned From Consumer Requests:</ul>
         <script>
             var infoList = document.querySelector('ul');
