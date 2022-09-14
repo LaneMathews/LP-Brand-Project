@@ -22,59 +22,66 @@
         </div>
         <ul>Info Returned From Consumer Requests:</ul>
         <script>
-                lpTag.agentSDK.init({});
+            var infoList = document.querySelector('ul');
+            var url = 'https://www.omdbapi.com/?t=';
+            var apiKey = '&apikey=4623f44d';
+            var title
 
-                var updateCallback = function(data) {
+            lpTag.agentSDK.init({});
 
-                    //var newData = data.newValue;
-                    console.log(data.newValue);
+            var updateCallback = function(data) {
+
+                var line = data.newValue[0];
+                var source = line.source;
+                var text = line.text;
+                var textStr = text.toString();
+    
+                if (source === "visitor") {
+                    title = textStr.trim();
                     
-                    var line = data.newValue[0];
-                    var source = line.source;
-                    var text = line.text;
-                    var textStr = text.toString();
-                    
-                    //document.write(text);
-                    if (source === "visitor") {
-                        document.write(textStr);
-                    }
-                    
-                    //console.log(text);
-                    console.log(textStr);
-                };
+                    var formatTitle = title.split(' ').join('+');
+                    var requestUrl = url + formatTitle + apiKey;
 
-                var pathToData = "chatTranscript.lines";
+                    fetch(requestUrl)
+                        .then(res => res.json())
+                        .then((data) => {
+                            if (!("Error" in data)) {
+                            var listItem = document.createElement('li');
 
-                lpTag.agentSDK.bind(pathToData, updateCallback);
+                            listItem.append(data.Title + ' is a ' + data.Type + ' released in ' + data.Year + ' with an IMDb Rating of ' + data.imdbRating + '.');
+                            infoList.appendChild(listItem);
+                            }
+                        });
+                }    
+            };
 
-            // var infoList = document.querySelector('ul');
-            // var url = 'https://www.omdbapi.com/?t=';
-            // var apiKey = '&apikey=4623f44d';
-            // var title
+            var pathToData = "chatTranscript.lines";
 
-            // var titleBox = document.getElementById('searchBox');
+            lpTag.agentSDK.bind(pathToData, updateCallback);
 
-            // titleBox.addEventListener("keypress", function(event) {
-            //     if (event.key === "Enter") {
-            //         title = titleBox.value;
+            var titleBox = document.getElementById('searchBox');
 
-            //         cleanTitle = title.trim();
-            //         formatTitle = cleanTitle.split(' ').join('+');
+            titleBox.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    title = titleBox.value;
 
-            //         requestUrl = url + formatTitle + apiKey;
+                    var cleanTitle = title.trim();
+                    var formatTitle = cleanTitle.split(' ').join('+');
 
-            //         fetch(requestUrl)
-            //             .then(res => res.json())
-            //             .then((data) => {
-            //                 if (!("Error" in data)) {
-            //                 var listItem = document.createElement('li');
+                    var requestUrl = url + formatTitle + apiKey;
 
-            //                 listItem.append(data.Title + ' is a ' + data.Type + ' released in ' + data.Year + ' with an IMDb Rating of ' + data.imdbRating + '.');
-            //                 infoList.appendChild(listItem);
-            //                 }
-            //             });
-            //     }
-            // });
+                    fetch(requestUrl)
+                        .then(res => res.json())
+                        .then((data) => {
+                            if (!("Error" in data)) {
+                            var listItem = document.createElement('li');
+
+                            listItem.append(data.Title + ' is a ' + data.Type + ' released in ' + data.Year + ' with an IMDb Rating of ' + data.imdbRating + '.');
+                            infoList.appendChild(listItem);
+                            }
+                        });
+                }
+            });
         </script>
     </body>
 </html>
