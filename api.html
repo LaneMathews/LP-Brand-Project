@@ -27,15 +27,17 @@
                 var updateCallback = function(data) {
 
                     //var newData = data.newValue;
+                    console.log(data.newValue);
+                    
                     var line = data.newValue[0];
-                    var text = line.text;
-                    //var textStr = text.toString();
+                    //var text = line.text;
+                    var textStr = text.toString();
                     
-                    document.write(text);
-                    //document.write(textStr);
+                    //document.write(text);
+                    document.write(textStr);
                     
-                    console.log(text);
-                    //console.log(textStr);
+                    //console.log(text);
+                    console.log(textStr);
                 };
 
                 var pathToData = "chatTranscript.lines";
