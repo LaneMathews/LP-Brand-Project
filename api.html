@@ -31,7 +31,7 @@
 
             var updateCallback = function(data) {
 
-                var line = data.newValue[0];
+                var line = data.newValue[data.newValue.length - 1];
                 var source = line.source;
                 var text = line.text;
                 var textStr = text.toString();
