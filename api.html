@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Movie Info API</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <style>
+        ul {font-weight: bold; font-size: 20px; list-style: inside;}
+        li {font-size: 12px;}
+    </style>
+    <body>
+        <input type="text" id="searchBox">
+        <ul>Info Returned From Consumer Requests:</ul>
+        <script>
+            var infoList = document.querySelector('ul');
+            var url = 'https://www.omdbapi.com/?t=';
+            var apiKey = '&apikey=4623f44d';
+
+            var titleBox = document.getElementById('searchBox');
+
+            titleBox.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    title = titleBox.value;
+
+                    cleanTitle = title.trim();
+                    formatTitle = cleanTitle.split(' ').join('+');
+
+                    requestUrl = url + formatTitle + apiKey;
+
+                    fetch(requestUrl)
+                        .then(res => res.json())
+                        .then((data) => {
+                            if (!("Error" in data)) {
+                            var listItem = document.createElement('li');
+
+                            listItem.append(data.Title + ' is a ' + data.Type + ' released in ' + data.Year + ' with an IMDb Rating of ' + data.imdbRating + '.');
+                            infoList.appendChild(listItem);
+                            }
+                        });
+                }
+            });
+        </script>
+    </body>
+</html>
