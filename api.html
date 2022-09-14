@@ -7,6 +7,7 @@
         <title>Movie Info API</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://lpcdn.lpsnmedia.net/webagent/client-SDK.min.js"></script>
     </head>
     <style>
         div {margin-left: 25px;}
@@ -21,33 +22,45 @@
         </div>
         <ul>Info Returned From Consumer Requests:</ul>
         <script>
-            var infoList = document.querySelector('ul');
-            var url = 'https://www.omdbapi.com/?t=';
-            var apiKey = '&apikey=4623f44d';
+                lpTag.agentSDK.init({});
 
-            var titleBox = document.getElementById('searchBox');
+                var updateCallback = function(data) {
+                    console.log(data)
+                    // userMessage = data.text;
+                };
 
-            titleBox.addEventListener("keypress", function(event) {
-                if (event.key === "Enter") {
-                    title = titleBox.value;
+                var pathToData = "chatTranscript.lines"
 
-                    cleanTitle = title.trim();
-                    formatTitle = cleanTitle.split(' ').join('+');
+                lpTag.agentSDK.bind(pathToData, updateCallback);
 
-                    requestUrl = url + formatTitle + apiKey;
+            // var infoList = document.querySelector('ul');
+            // var url = 'https://www.omdbapi.com/?t=';
+            // var apiKey = '&apikey=4623f44d';
+            // var title
 
-                    fetch(requestUrl)
-                        .then(res => res.json())
-                        .then((data) => {
-                            if (!("Error" in data)) {
-                            var listItem = document.createElement('li');
+            // var titleBox = document.getElementById('searchBox');
 
-                            listItem.append(data.Title + ' is a ' + data.Type + ' released in ' + data.Year + ' with an IMDb Rating of ' + data.imdbRating + '.');
-                            infoList.appendChild(listItem);
-                            }
-                        });
-                }
-            });
+            // titleBox.addEventListener("keypress", function(event) {
+            //     if (event.key === "Enter") {
+            //         title = titleBox.value;
+
+            //         cleanTitle = title.trim();
+            //         formatTitle = cleanTitle.split(' ').join('+');
+
+            //         requestUrl = url + formatTitle + apiKey;
+
+            //         fetch(requestUrl)
+            //             .then(res => res.json())
+            //             .then((data) => {
+            //                 if (!("Error" in data)) {
+            //                 var listItem = document.createElement('li');
+
+            //                 listItem.append(data.Title + ' is a ' + data.Type + ' released in ' + data.Year + ' with an IMDb Rating of ' + data.imdbRating + '.');
+            //                 infoList.appendChild(listItem);
+            //                 }
+            //             });
+            //     }
+            // });
         </script>
     </body>
 </html>
