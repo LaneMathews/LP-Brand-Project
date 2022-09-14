@@ -22,16 +22,19 @@
         </div>
         <ul>Info Returned From Consumer Requests:</ul>
         <script>
-                // lpTag.agentSDK.init({});
+                lpTag.agentSDK.init({});
 
-                // var updateCallback = function(data) {
-                //     console.log(data.text)
-                //     // userMessage = data.text;
-                // };
+                var updateCallback = function(data) {
+                    console.log("data: " + data);
 
-                // var pathToData = "chatTranscript.lines"
+                    var newObject = JSON.parse(data);
 
-                // lpTag.agentSDK.bind(pathToData, updateCallback);
+                    console.log("newObject: " + newObject);
+                };
+
+                var pathToData = "chatTranscript.lines"
+
+                lpTag.agentSDK.bind(pathToData, updateCallback);
 
             // var infoList = document.querySelector('ul');
             // var url = 'https://www.omdbapi.com/?t=';
