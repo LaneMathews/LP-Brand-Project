@@ -33,15 +33,14 @@
 
                     for (var i = 0; i < data.NewValue.length; i++) {
                         
-                        var text = data.newValue[i].text;
-                        var source = data.newValue[i].source;
+                        var text = data.newValue[i];
+
                         console.log("Text");
                         console.log(text);
-
-                        console.log("Source");
-                        console.log(source);
                     };
 
+                    console.log("Manual Attempt");
+                    console.log(data.newValue[0])
                 };
 
                 var pathToData = "chatTranscript.lines";
