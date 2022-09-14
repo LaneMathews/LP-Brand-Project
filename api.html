@@ -31,16 +31,27 @@
                     console.log("Data New Value");
                     console.log(data.newValue);
 
-                    for (var i = 0; i < data.NewValue.length; i++) {
+                    var dataArray = JSON.parse(data.newValue)
+
+                    console.log("Data Array")
+                    console.log(dataArray)
+
+                    console.log("Data Array 0")
+                    console.log(dataArray[0])
+
+                    console.log("Data Array 0 Text")
+                    console.log(dataArray[0].text)
+
+                    // for (var i = 0; i < data.NewValue.length; i++) {
                         
-                        var text = data.newValue[i];
+                    //     var text = data.newValue[i];
 
-                        console.log("Text");
-                        console.log(text);
-                    };
+                    //     console.log("Text");
+                    //     console.log(text);
+                    // };
 
-                    console.log("Manual Attempt");
-                    console.log(data.newValue[0])
+                    // console.log("Manual Attempt");
+                    // console.log(data.newValue[0])
                 };
 
                 var pathToData = "chatTranscript.lines";
