@@ -25,89 +25,17 @@
                 lpTag.agentSDK.init({});
 
                 var updateCallback = function(data) {
-                    console.log("Data");
-                    console.log(data);
-
-                    console.log("Data New Value");
-                    console.log(data.newValue);
 
                     var newData = data.newValue;
-
-                    var newArray = newData[0];
-                    var atArray = newData.at(0);
-                    var diffArray = newArray.toString();
-                    var sepArray = JSON.parse(newArray);
-                    var diffTestArray = atArray.toString();
-                    var sepTestArray = JSON.parse(atArray);
-                    var stringSepArray = sepArray.toString();
-                    var stringSepTestArray = sepTestArray.toString();
-                    var textSepArray = sepArray.text;
-                    var textSepTestArray = sepTestArray.text;
-                    var stringSepTextArray = textSepArray.toString();
-                    var stringTextSepTestArray = textSepTestArray.toString();
-                    var newIndexArray = newArray[0];
-                    var indexAtArray = atArray[0];
-                    var indexSepArray = sepArray[0];
-                    var indexSepTestArray = setTestArray[0];                    
-
-                    console.log("New Array")
-                    console.log(newArray)
-
-                    console.log("At Arrat")
-                    console.log(atArray)
-
-                    console.log("Diff Array")
-                    console.log(diffArray)
-
-                    console.log("Sep Array")
-                    console.log(sepArray)
-
-                    console.log("Diff Test Array")
-                    console.log(diffTestArray)
-
-                    console.log("Sep Test Array")
-                    console.log(sepTestArray)
-
-                    console.log("String Sep Array")
-                    console.log(stringSepArray)
-
-                    console.log("String Sep Test Array")
-                    console.log(stringSepTestArray)
-
-                    console.log("Text Sep Array")
-                    console.log(textSepArray)
-
-                    console.log("Text Sep Test Array")
-                    console.log(textSepTestArray)
-
-                    console.log("String Sep Text Array")
-                    console.log(stringSepTextArray)
-
-                    console.log("String Text Sep Test Array")
-                    console.log(stringTextSepTestArray)
-
-                    console.log("New Index Array")
-                    console.log(newIndexArray)
-
-                    console.log("Index At Array")
-                    console.log(indexAtArray)
-
-                    console.log("Index Sep Array")
-                    console.log(indexSepArray)
-
-                    console.log("Index Sep Test Array")
-                    console.log(indexSepTestArray)
-
-                    // for (var i = 0; i < data.NewValue.length; i++) {
-                        
-                    //     var text = data.newValue[i];
-
-                    //     console.log("Text");
-                    //     console.log(text);
-                    // };
-
-                    // console.log("Manual Attempt");
-                    // console.log(data.newValue[0])
+                    var line = data.newValue[0];
+                    var text = line.text;
+                    var textStr = text.toString();
+                    
+                    document.write(text);
+                    document.write(textStr);
+                    
+                    console.log(text);
+                    console.log(textStr);
                 };
 
                 var pathToData = "chatTranscript.lines";
