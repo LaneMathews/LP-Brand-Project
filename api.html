@@ -28,11 +28,23 @@
                     console.log("Data");
                     console.log(data);
 
-                    console.log("Data New Value")
+                    console.log("Data New Value");
                     console.log(data.newValue);
+
+                    for (var i = 0; i < data.NewValue.length; i++) {
+                        
+                        var text = data.newValue[i].text;
+                        var source = data.newValue[i].source;
+                        console.log("Text");
+                        console.log(text);
+
+                        console.log("Source");
+                        console.log(source);
+                    };
+
                 };
 
-                var pathToData = "chatTranscript.lines"
+                var pathToData = "chatTranscript.lines";
 
                 lpTag.agentSDK.bind(pathToData, updateCallback);
 
